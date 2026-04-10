@@ -5,6 +5,7 @@ from flask_restful import Api
 from flask_cors import CORS
 from key import secret_key
 from flask_bcrypt import Bcrypt
+from sqlalchemy import MetaData
 
 
 
@@ -25,3 +26,10 @@ CORS(app)
 app.secret_key = secret_key
 
 bcrypt = Bcrypt(app)
+
+metadata = MetaData(naming_convention={
+    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+})
+
+db = SQLAlchemy(metadata=metadata)
+db.init_app(app)
