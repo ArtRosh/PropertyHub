@@ -34,13 +34,6 @@ class Property(db.Model , SerializerMixin):
             return name
         else:
             raise ValueError("The property must have a name.")
-    
-    @validates('address')
-    def validates_address(self, key, address):
-        if address:
-            return address
-        else:
-            raise ValueError("The property must have an address.")
         
     @validates('description')
     def validates_description(self, key, description):
