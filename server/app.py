@@ -76,3 +76,17 @@ def properties():
         db.session.commit()
 
         return new_property.to_dict(), 201
+    
+@app.route('/properties/<int:id>', methods=['DELETE'])
+def delete_property(id):
+    user = User.query.get(session.get('user_id'))
+
+    if not user or user.role != 'Admin':
+        return {"error": "Unauthorized"}, 403
+
+    property = Property.query.get(id)
+
+    db.session.delete(property)
+    db.session.commit()
+
+    return {}, 204
