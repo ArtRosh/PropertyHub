@@ -4,6 +4,7 @@ from flask import request, session
 from models import User
 from config import db
 from models import Property
+from models import Review
 
 
 @app.route('/')
@@ -90,3 +91,26 @@ def delete_property(id):
     db.session.commit()
 
     return {}, 204
+
+@app.route('/reviews', methods=['GET', 'POST'])
+def reviews():
+
+    if request.method == 'GET':
+        reviews = Review.query.all()
+        return [r.to_dict() for r in reviews], 200
+
+    if request.method == 'POST':
+        data = request.get_json()
+
+        review = Review(
+            name=data['name'],
+            email=data['email'],
+            rating=data['rating'],
+            comment=data['comment'],
+            property_id=data['property_id']
+        )
+
+        db.session.add(review)
+        db.session.commit()
+
+        return review.to_dict(), 201
