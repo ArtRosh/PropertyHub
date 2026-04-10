@@ -5,6 +5,7 @@ from models import User
 from config import db
 from models import Property
 from models import Review
+from models import Image
 
 
 @app.route('/')
@@ -132,3 +133,20 @@ def review_by_id(id):
         db.session.delete(review)
         db.session.commit()
         return {}, 204
+    
+@app.route('/images', methods=['GET', 'POST'])
+def images():
+
+    if request.method == 'GET':
+        images = Image.query.all()
+        return [i.to_dict() for i in images], 200
+
+    if request.method == 'POST':
+        data = request.get_json()
+
+        image = Image(image=data['image'])
+
+        db.session.add(image)
+        db.session.commit()
+
+        return image.to_dict(), 201
