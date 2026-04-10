@@ -3,6 +3,7 @@ from config import app
 from flask import request, session
 from models import User
 from config import db
+from models import Property
 
 
 @app.route('/')
@@ -55,3 +56,23 @@ def check_session():
 def get_users():
     users = User.query.all()
     return [u.to_dict() for u in users], 200
+
+@app.route('/properties', methods=['GET', 'POST'])
+def properties():
+
+    if request.method == 'GET':
+        properties = Property.query.all()
+        return [p.to_dict() for p in properties], 200
+
+    if request.method == 'POST':
+        data = request.get_json()
+
+        new_property = Property(
+            name=data['name'],
+            location=data['location']
+        )
+
+        db.session.add(new_property)
+        db.session.commit()
+
+        return new_property.to_dict(), 201
