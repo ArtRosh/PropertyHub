@@ -150,3 +150,17 @@ def images():
         db.session.commit()
 
         return image.to_dict(), 201
+    
+@app.route('/images/<int:id>', methods=['DELETE'])
+def delete_image(id):
+    user = User.query.get(session.get('user_id'))
+
+    if not user or user.role != 'Admin':
+        return {"error": "Unauthorized"}, 403
+
+    image = Image.query.get(id)
+
+    db.session.delete(image)
+    db.session.commit()
+
+    return {}, 204
