@@ -11,6 +11,7 @@ class Property(db.Model):
 
     reviews = db.relationship("Review", back_populates="property", cascade="all, delete-orphan")
     images = db.relationship("Image", back_populates="property", cascade="all, delete-orphan")
+    property_users = db.relationship("PropertyUser", back_populates="property", cascade="all, delete-orphan")
 
 
 class User(db.Model):
@@ -18,6 +19,7 @@ class User(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String, unique=True)
+    property_users = db.relationship("PropertyUser", back_populates="user", cascade="all, delete-orphan")
 
 
 class Review(db.Model):
@@ -38,3 +40,15 @@ class Image(db.Model):
 
     property_id = db.Column(db.Integer, db.ForeignKey("properties.id"))
     property = db.relationship("Property", back_populates="images")
+
+
+class PropertyUser(db.Model):
+    __tablename__ = "property_users"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    property_id = db.Column(db.Integer, db.ForeignKey("properties.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+
+    property = db.relationship("Property", back_populates="property_users")
+    user = db.relationship("User", back_populates="property_users")
