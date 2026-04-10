@@ -41,3 +41,12 @@ def login():
 def logout():
     session['user_id'] = None
     return {}, 204
+
+@app.route('/check_session')
+def check_session():
+    user = User.query.get(session.get('user_id'))
+
+    if user:
+        return user.to_dict(), 200
+
+    return {}, 401
