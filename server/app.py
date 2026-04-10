@@ -50,3 +50,8 @@ def check_session():
         return user.to_dict(), 200
 
     return {}, 401
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    return [u.to_dict() for u in users], 200
