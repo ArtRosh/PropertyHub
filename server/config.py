@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from flask_restful import Api
 from flask_cors import CORS
 from key import secret_key
+from flask_bcrypt import Bcrypt
 
 
 
@@ -22,3 +23,5 @@ api = Api(app)
 CORS(app)
 
 app.secret_key = secret_key
+
+bcrypt = Bcrypt(app)
