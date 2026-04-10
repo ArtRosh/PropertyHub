@@ -114,3 +114,21 @@ def reviews():
         db.session.commit()
 
         return review.to_dict(), 201
+    
+@app.route('/reviews/<int:id>', methods=['PATCH', 'DELETE'])
+def review_by_id(id):
+    review = Review.query.get(id)
+
+    if request.method == 'PATCH':
+        data = request.get_json()
+
+        for key in data:
+            setattr(review, key, data[key])
+
+        db.session.commit()
+        return review.to_dict(), 200
+
+    if request.method == 'DELETE':
+        db.session.delete(review)
+        db.session.commit()
+        return {}, 204
