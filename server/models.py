@@ -2,6 +2,8 @@ from flask_sqlalchemy import SQLAlchemy
 from config import db
 from sqlalchemy.ext.hybrid import hybrid_property
 from config import bcrypt
+from sqlalchemy.orm import validates
+from datetime import datetime
 
 
 class Property(db.Model):
@@ -10,11 +12,17 @@ class Property(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String)
     location = db.Column(db.String)
+    description = db.Column(db.String)
 
     reviews = db.relationship("Review", back_populates="property", cascade="all, delete-orphan")
     images = db.relationship("Image", back_populates="property", cascade="all, delete-orphan")
     property_users = db.relationship("PropertyUser", back_populates="property", cascade="all, delete-orphan")
 
+    @validates("name")
+    def validate_name(self, key, value):
+        if not value:
+            raise ValueError("Property must have a name")
+        return value
 
 class User(db.Model):
     __tablename__ = "users"
@@ -42,9 +50,17 @@ class Review(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     comment = db.Column(db.String)
+    rating = db.Column(db.Integer)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     property_id = db.Column(db.Integer, db.ForeignKey("properties.id"))
     property = db.relationship("Property", back_populates="reviews")
+
+    @validates("rating")
+    def validate_rating(self, key, value):
+        if not (0 <= value <= 5):
+            raise ValueError("Rating must be between 0 and 5")
+        return value
 
 
 class Image(db.Model):
