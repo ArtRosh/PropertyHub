@@ -1,13 +1,114 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --bg: #282c34;
+  --header: #fff;
+  --link: #61dafb;
+  --text: hsla(0, 0%, 100%, 0.88);
+}
+.dark{
+  background-color: #333;
+  color:#fff;
+}.dark.form-input{
+  background-color: #555;
+  color:#fff;
+}
+.light{
+  background-color:#fff;
+  color:#333;
+}
+.light.form-input{
+  background-color: #f2f2f2;
+  color: #333;
+}
+.navbar{
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f2f2f2;
+  height: 40px;
+}
+.navbar-item{
+  margin: 0 10px;
+  font-size: 30px;
+  color: rgb(13, 14, 13);
+}
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  overflow: none;
+  max-height: 90vh;
+  padding: 10px;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.image-card{
+  position:flex;
+  width: 240px;
+  height: 276;
 }
+.image-img{
+  width: 450px;
+  height: 450px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+
+.form-card{
+  display: flexbox;
+  text-align: center;
+}
+
+.property-container{
+  display:table-row;
+    gap: 20px;
+    overflow:auto;
+    max-height: 10vh;
+    padding: 10px;
+    text-align: center;
+    font-size: large;
+    font-family: Verdana;
+}.property-name{
+  font-size:x-large;
+  font-weight: 900;
+}
+.review-container{
+  display: table-row;
+  gap: 20px;
+  overflow:auto;
+  max-height: 10vh;
+  padding: 10px;
+  text-align:center;
+}
+.review-card{
+  position:flex;
+  font-size:larger;
+  font-family:Georgia;
+}
+
+.form-container{
+  position: relative;
+  display: table-cell;
+  text-align: center;
+}
+.rounded-button{
+  border-radius: 5px;
+}
+.images-button{
+  border-radius: 8px;
+}
+.reviews-button{
+  border-radius: 12px;
+}
+.review_button{
+  border-radius: 15px;
+}
+.button_font{
+  font-family: Georgia;
+}
+
