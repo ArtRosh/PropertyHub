@@ -1,3 +1,33 @@
+# macOS
+.DS_Store
+
+# env
 .env
-instance/
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# virtual env
+venv/
+.venv/
+env/
+
+# database
 *.db
+*.sqlite3
+instance/
+
+# IDE
+.vscode/
+.idea/
+
+# node (frontend)
+node_modules/
+package-lock.json
+
+# pytest
+.pytest_cache/
