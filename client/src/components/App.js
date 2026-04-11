@@ -6,6 +6,9 @@ import Images from './Images';
 import NewPropertyForm from './NewPropertyForm';
 import NewReviewForm from './NewReviewForm';
 import NewImage from './NewImage';
+import Login from './Login';
+import SignupForm from './SignUp';
+import Logout from './Logout';
 
 function App() {
   const [properties, setProperties] = useState([]);
