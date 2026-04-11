@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Switch, Route } from "react-router-dom";
+import Properties from './Properties';
+import Reviews from './Reviews';
+import Images from './Images';
 
 function App() {
   const [properties, setProperties] = useState([]);
