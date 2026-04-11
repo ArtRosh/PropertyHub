@@ -3,6 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import Properties from './Properties';
 import Reviews from './Reviews';
 import Images from './Images';
+import NewPropertyForm from './NewPropertyForm';
+import NewReviewForm from './NewReviewForm';
+import NewImage from './NewImage';
 
 function App() {
   const [properties, setProperties] = useState([]);
