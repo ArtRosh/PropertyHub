@@ -9,6 +9,9 @@ import NewImage from './NewImage';
 import Login from './Login';
 import SignupForm from './SignUp';
 import Logout from './Logout';
+import NavBar from './NavBar';
+import { DarkModeProvider } from './DarkModeContext';
+import SiteTitle from '../SiteTitle';
 
 function App() {
   const [properties, setProperties] = useState([]);
