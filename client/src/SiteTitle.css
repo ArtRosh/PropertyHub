@@ -1,0 +1,52 @@
+.site-title-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url(https://oak-islandnc.com/wp-content/uploads/2019/08/Oak-Island-Rules-and-Regulations.jpg);
+    background-position:cover;
+    animation: fade 16s infinite;
+    color: aliceblue;
+    }
+    
+    .site-title-container h1 {
+    font-size: 115px;
+    font-family: garamond;
+    text-align: center;
+    }
+    
+    .handwriting {
+    animation: handwriting 0.5s forwards;
+    opacity: 0;
+    }
+    
+    @keyframes handwriting {
+    from {
+    opacity: 0;
+    }
+    to {
+    opacity: 1;
+    }
+    }
+    
+    
+    @keyframes fade {
+    0% {
+    }
+    25%{
+    opacity: 1;
+    background-image: url(https://a0.muscache.com/im/pictures/miso/Hosting-1020238695595931638/original/25b92775-69b7-47df-9d7c-3314dcac5053.jpeg?im_w=1200)
+    }
+    50% {
+    opacity: 1;
+    background-image: url(https://www.wilmington-nc.com/images/uploads/static_content/713/wilmington_things_to_do_hero17.jpg?t=h)
+    }
+    75% {
+    opacity: 1;
+    background-image: url(https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/oak-island-sunrise-nick-noble.jpg)
+    }
+    100% {
+    opacity: 2;
+    background-image: url(https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_575,q_65,w_1440,x_2368,y_794/v1/clients/wilmingtonnc/Fireworks_7_4_21_downtown_0118b519-3d32-47f7-ad0a-761c934e0f9c.jpg)
+    }
+    }
