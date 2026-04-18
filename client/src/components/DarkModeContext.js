@@ -1,3 +1,16 @@
+import React, { createContext, useState} from "react";
+
+export const DarkModeContext = createContext();
+
 export const DarkModeProvider = ({ children }) => {
-  return <>{children}</>;
+    const [isDarkMode, setIsDarkMode] = useState(true);
+
+    const toggleDarkMode = () => {
+        setIsDarkMode((prevMode) => !prevMode);
+    };
+    return (
+        <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode}}>
+            {children}
+        </DarkModeContext.Provider>
+    );
 };
